@@ -25,6 +25,95 @@ resource "aws_route53_record" "a_mail" {
   ttl     = "14400"
   records = [var.ip_hospedagem]
 }
+
+resource "aws_route53_record" "cname_autoconfig" {
+  zone_id = resource.aws_route53_zone.zona_dns.zone_id
+  name    = "autoconfig"
+  type    = "CNAME"
+  ttl     = "14400"
+  records = [format("mail.%s",resource.aws_route53_zone.zona_dns.name)]
+}
+
+resource "aws_route53_record" "cname_autodiscover" {
+  zone_id = resource.aws_route53_zone.zona_dns.zone_id
+  name    = "autodiscover"
+  type    = "CNAME"
+  ttl     = "14400"
+  records = [format("mail.%s",resource.aws_route53_zone.zona_dns.name)]
+}
+
+resource "aws_route53_record" "cname_cpcalendars" {
+  zone_id = resource.aws_route53_zone.zona_dns.zone_id
+  name    = "cpcalendars"
+  type    = "CNAME"
+  ttl     = "14400"
+  records = [format("mail.%s",resource.aws_route53_zone.zona_dns.name)]
+}
+
+resource "aws_route53_record" "cname_cpcontacts" {
+  zone_id = resource.aws_route53_zone.zona_dns.zone_id
+  name    = "cpcontacts"
+  type    = "CNAME"
+  ttl     = "14400"
+  records = [format("mail.%s",resource.aws_route53_zone.zona_dns.name)]
+}
+
+resource "aws_route53_record" "cname_cpanel" {
+  zone_id = resource.aws_route53_zone.zona_dns.zone_id
+  name    = "cpanel"
+  type    = "CNAME"
+  ttl     = "14400"
+  records = [format("mail.%s",resource.aws_route53_zone.zona_dns.name)]
+}
+
+resource "aws_route53_record" "cname_ftp" {
+  zone_id = resource.aws_route53_zone.zona_dns.zone_id
+  name    = "ftp"
+  type    = "CNAME"
+  ttl     = "14400"
+  records = [format("mail.%s",resource.aws_route53_zone.zona_dns.name)]
+}
+
+resource "aws_route53_record" "cname_webdisk" {
+  zone_id = resource.aws_route53_zone.zona_dns.zone_id
+  name    = "webdisk"
+  type    = "CNAME"
+  ttl     = "14400"
+  records = [format("mail.%s",resource.aws_route53_zone.zona_dns.name)]
+}
+
+resource "aws_route53_record" "cname_webmail" {
+  zone_id = resource.aws_route53_zone.zona_dns.zone_id
+  name    = "webmail"
+  type    = "CNAME"
+  ttl     = "14400"
+  records = [format("mail.%s",resource.aws_route53_zone.zona_dns.name)]
+}
+
+resource "aws_route53_record" "cname_whm" {
+  zone_id = resource.aws_route53_zone.zona_dns.zone_id
+  name    = "whm"
+  type    = "CNAME"
+  ttl     = "14400"
+  records = [format("mail.%s",resource.aws_route53_zone.zona_dns.name)]
+}
+
+resource "aws_route53_record" "cname_e-mail" {
+  zone_id = resource.aws_route53_zone.zona_dns.zone_id
+  name    = "e-mail"
+  type    = "CNAME"
+  ttl     = "14400"
+  records = [format("mail.%s",resource.aws_route53_zone.zona_dns.name)]
+}
+
+resource "aws_route53_record" "cname_imap" {
+  zone_id = resource.aws_route53_zone.zona_dns.zone_id
+  name    = "imap"
+  type    = "CNAME"
+  ttl     = "14400"
+  records = [format("mail.%s",resource.aws_route53_zone.zona_dns.name)]
+}
+
 resource "aws_route53_record" "cname_pop" {
   zone_id = resource.aws_route53_zone.zona_dns.zone_id
   name    = "pop"
@@ -33,12 +122,12 @@ resource "aws_route53_record" "cname_pop" {
   records = [format("mail.%s",resource.aws_route53_zone.zona_dns.name)]
 }
 
-/*resource "aws_route53_record" "cname_pop3" {
+resource "aws_route53_record" "cname_pop3" {
   zone_id = resource.aws_route53_zone.zona_dns.zone_id
   name    = "pop3"
   type    = "CNAME"
   ttl     = "14400"
-  records = ["mail.ita.locaweb.com.br."]
+  records = [format("mail.%s",resource.aws_route53_zone.zona_dns.name)]
 }
 
 resource "aws_route53_record" "cname_smtp" {
@@ -46,95 +135,7 @@ resource "aws_route53_record" "cname_smtp" {
   name    = "smtp"
   type    = "CNAME"
   ttl     = "14400"
-  records = ["mail.ita.locaweb.com.br."]
-}
-
-resource "aws_route53_record" "cname_imap" {
-  zone_id = resource.aws_route53_zone.zona_dns.zone_id
-  name    = "imap"
-  type    = "CNAME"
-  ttl     = "14400"
-  records = ["mail.ita.locaweb.com.br."]
-}
-
-resource "aws_route53_record" "cname_mail" {
-  zone_id = resource.aws_route53_zone.zona_dns.zone_id
-  name    = "mail"
-  type    = "CNAME"
-  ttl     = "14400"
-  records = ["mail.ita.locaweb.com.br."]
-}
-
-resource "aws_route53_record" "cname_pda" {
-  zone_id = resource.aws_route53_zone.zona_dns.zone_id
-  name    = "pda"
-  type    = "CNAME"
-  ttl     = "14400"
-  records = ["mail.ita.locaweb.com.br."]
-}
-
-resource "aws_route53_record" "cname_webmail" {
-  zone_id = resource.aws_route53_zone.zona_dns.zone_id
-  name    = "webmail"
-  type    = "CNAME"
-  ttl     = "14400"
-  records = ["webmail-seguro.com.br."]
-}
-
-resource "aws_route53_record" "cname_calendario" {
-  zone_id = resource.aws_route53_zone.zona_dns.zone_id
-  name    = "calendario"
-  type    = "CNAME"
-  ttl     = "14400"
-  records = ["calendario.locaweb.com.br."]
-}
-
-resource "aws_route53_record" "cname_autodiscover" {
-  zone_id = resource.aws_route53_zone.zona_dns.zone_id
-  name    = "autodiscover"
-  type    = "CNAME"
-  ttl     = "14400"
-  records = ["autodiscover.email.locaweb.com.br."]
-}
-
-resource "aws_route53_record" "cname_relatorio" {
-  zone_id = resource.aws_route53_zone.zona_dns.zone_id
-  name    = "relatorio"
-  type    = "CNAME"
-  ttl     = "14400"
-  records = ["relatorio.locaweb.com.br."]
-}
-
-resource "aws_route53_record" "cname_relatorios" {
-  zone_id = resource.aws_route53_zone.zona_dns.zone_id
-  name    = "relatorios"
-  type    = "CNAME"
-  ttl     = "14400"
-  records = ["relatorios.locaweb.com.br."]
-}
-
-resource "aws_route53_record" "cname_painel" {
-  zone_id = resource.aws_route53_zone.zona_dns.zone_id
-  name    = "painel"
-  type    = "CNAME"
-  ttl     = "14400"
-  records = ["painel.locaweb.com.br."]
-}
-
-resource "aws_route53_record" "cname_mobile" {
-  zone_id = resource.aws_route53_zone.zona_dns.zone_id
-  name    = "mobile"
-  type    = "CNAME"
-  ttl     = "14400"
-  records = ["mail.ita.locaweb.com.br."]
-}
-
-resource "aws_route53_record" "cname_gerenciador" {
-  zone_id = resource.aws_route53_zone.zona_dns.zone_id
-  name    = "gerenciador"
-  type    = "CNAME"
-  ttl     = "14400"
-  records = ["gerenciador.locaweb.com.br."]
+  records = [format("mail.%s",resource.aws_route53_zone.zona_dns.name)]
 }
 
 resource "aws_ses_domain_identity" "ses_dominio" {
@@ -162,4 +163,4 @@ output "zone_id" {
 output "nameservers" {
     description = "NameServers do domínio"
     value       = resource.aws_route53_zone.zona_dns.name_servers
-}*/
+}
